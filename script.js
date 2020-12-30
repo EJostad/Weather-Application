@@ -1,3 +1,6 @@
+$( document ).ready(function() {
+    console.log( "ready!" );
+
 var city = "Portland";
 
 // This function is responsible for getting todays weather and appending it to the todaysWeather div element
@@ -68,4 +71,5 @@ function getUvIndex(long, lat) {
             $(".tempF").text("Temperature (F) " + tempF.toFixed(2));
         })
 }
-getUvIndex(long, lat)
+// getUvIndex(long, lat)
+});
