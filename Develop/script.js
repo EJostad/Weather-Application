@@ -43,15 +43,12 @@ $(document).ready(function () {
                     // Log the resulting object
                     console.log(response);
 
+                     // Convert the temp to fahrenheit
+                     var tempF = Math.floor((response.main.temp - 273.15) * 1.80 + 32);
+
                     // Transfer content to HTML 
-                    $("#todaysWeather").html("<h1>" + response.name + " Weather: " + response.main.temp + "K</h1>");
+                    $("#todaysWeather").html("<h1>" + response.name + " Weather: " + tempF + " F</h1>");
 
-                    // Convert the temp to fahrenheit
-                    var tempF = (response.main.temp - 273.15) * 1.80 + 32;
-
-                    // add temp content to html
-                    $(".temp").text("Temperature (K) " + response.main.temp);
-                    $(".tempF").text("Temperature (F) " + tempF.toFixed(2));
                 })
         }
         getTodaysWeather();
