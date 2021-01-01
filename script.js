@@ -11,7 +11,7 @@ $( document ).ready(function() {
 document.getElementById("searchCity").addEventListener("click", function searchCity() {
     console.log("click!")
 
-    var userInput = "portland";
+    var userInput = document.getElementById("userInput").value;;
 
     var city = userInput; 
 
