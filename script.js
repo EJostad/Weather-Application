@@ -1,10 +1,22 @@
 $( document ).ready(function() {
     console.log( "ready!" );
 
-var city = "Portland";
+// var searchCityBtn = $("#searchCity");
+// searchCityBtn.click(city);
+
+// var userInput = "#searchCity"
+// var inputValue = document.getElementById("cityInput").value;
+// var city = inputValue;
+
+document.getElementById("searchCity").addEventListener("click", function searchCity() {
+    console.log("click!")
+
+    var userInput = "portland";
+
+    var city = userInput; 
 
 // This function is responsible for getting todays weather and appending it to the todaysWeather div element
-function getTodaysWeather(city) {
+function getTodaysWeather() {
 
     // Variable to to hold the API key for todaysWeather
     var APIKey = "178ad9e584c10611ec693eda4d905c79";
@@ -37,39 +49,42 @@ function getTodaysWeather(city) {
             $(".tempF").text("Temperature (F) " + tempF.toFixed(2));
         })
 }
-getTodaysWeather(city)
+getTodaysWeather();
+});
 
-// This function is responsible for getting todays UV Index and appending it to the uvIndex div element
-function getUvIndex(long, lat) {
-    var APIKey = "178ad9e584c10611ec693eda4d905c79";
+// getTodaysWeather(city)
 
-    var queryURL = "https://api.openweathermap.org/data/2.5/weather?" + "q=" + city + "&appid=" + APIKey;
+// // This function is responsible for getting todays UV Index and appending it to the uvIndex div element
+// function getUvIndex(long, lat) {
+//     var APIKey = "178ad9e584c10611ec693eda4d905c79";
 
-    $.ajax({
-        url: queryURL,
-        method: "GET"
-    })
-        // We store all of the retrieved data inside of an object called "response"
-        .then(function (response) {
+//     var queryURL = "https://api.openweathermap.org/data/2.5/weather?" + "q=" + city + "&appid=" + APIKey;
 
-            // Log the queryURL
-            console.log(queryURL);
+//     $.ajax({
+//         url: queryURL,
+//         method: "GET"
+//     })
+//         // We store all of the retrieved data inside of an object called "response"
+//         .then(function (response) {
 
-            // Log the resulting object
-            console.log(response);
+//             // Log the queryURL
+//             console.log(queryURL);
 
-            // Transfer content to HTML 
-            $("#uvIndex").html("<h1> UV Index: " + response.current.uvi + "K</h1>");
-            $(".wind").text("Wind Speed: " + response.wind.speed);
-            $(".humidity").text("Humidity: " + response.main.humidity);
+//             // Log the resulting object
+//             console.log(response);
 
-            // Convert the temp to fahrenheit
-            var tempF = (response.main.temp - 273.15) * 1.80 + 32;
+//             // Transfer content to HTML 
+//             $("#uvIndex").html("<h1> UV Index: " + response.current.uvi + "K</h1>");
+//             $(".wind").text("Wind Speed: " + response.wind.speed);
+//             $(".humidity").text("Humidity: " + response.main.humidity);
 
-            // add temp content to html
-            $(".temp").text("Temperature (K) " + response.main.temp);
-            $(".tempF").text("Temperature (F) " + tempF.toFixed(2));
-        })
-}
-// getUvIndex(long, lat)
+//             // Convert the temp to fahrenheit
+//             var tempF = (response.main.temp - 273.15) * 1.80 + 32;
+
+//             // add temp content to html
+//             $(".temp").text("Temperature (K) " + response.main.temp);
+//             $(".tempF").text("Temperature (F) " + tempF.toFixed(2));
+//         })
+// }
+// // getUvIndex(long, lat)
 });
