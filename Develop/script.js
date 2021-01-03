@@ -1,8 +1,8 @@
-$(document).ready(function () {
+$(document).ready(function (){
     console.log("ready!");
 
     // This function allows moment.js to display the current date & time to the page
-    function curretDateAndTime() {
+    function curretDateAndTime(){
         // Instantiate a moment object	
         var NowMoment = moment().format("dddd, MMMM Do YYYY, h:mm:ss a");
 
@@ -23,18 +23,19 @@ $(document).ready(function () {
         var city = userInput;
 
         // This function is responsible for getting todays weather and appending it to the todaysWeather div element
-        function getTodaysWeather() {
+        function getTodaysWeather(city){
 
-            // Variable to to hold the API key for todaysWeather
+            // Variable to hold the API key for todaysWeather
             var APIKey = "178ad9e584c10611ec693eda4d905c79";
 
+            // Variable to hold the API call
             var queryURL = "https://api.openweathermap.org/data/2.5/weather?" + "q=" + city + "&APPID=" + APIKey;
 
             $.ajax({
                 url: queryURL,
                 method: "GET"
             })
-                // We store all of the retrieved data inside of an object called "response"
+                // This will store all of the retrieved data inside of an object called "response"
                 .then(function (response) {
 
                     // Log the queryURL
@@ -44,23 +45,29 @@ $(document).ready(function () {
                     console.log(response);
 
                     // Log the coordinates response 
-                    console.log(response.coord);
+                    console.log(response.coord.lat, response.coord.lon);
+
+                    // Get the coordinates for the UV Index call
+                    getUvIndex(response.coord.lat, response.coord.lon);
 
                     // Convert the temp to fahrenheit
                     var tempF = Math.floor((response.main.temp - 273.15) * 1.80 + 32);
 
                     // Transfer content to HTML 
                     $("#todaysWeather").html("<h1>" + response.name + " Temperature: " + tempF + " F</h1>");
-                    
+
                 })
         }
-        getTodaysWeather();
+        getTodaysWeather(city);
 
         // This function is responsible for getting todays UV Index and appending it to the uvIndex div element
-        function getUvIndex() {
+        function getUvIndex(lat, lon){
+
+            // Variable to hold the API key for UvIndex
             var APIKey = "178ad9e584c10611ec693eda4d905c79";
 
-            var queryURL = "http://api.openweathermap.org/data/2.5/uvi?lat=" + response.coord.lat + "&lon=" + response.coord.lon + "&appid=" + APIKey;
+            // Variable to hold the API call
+            var queryURL = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&exclude=hourly,daily&appid=" + APIKey;
 
             $.ajax({
                 url: queryURL,
@@ -73,13 +80,13 @@ $(document).ready(function () {
                     console.log(queryURL);
 
                     // Log the resulting object
-                    console.log(response);
+                    console.log(response.coord);
 
                     // Transfer content to HTML 
                     $("#uvIndex").html("<h1> UV Index: " + response.current.uvi + "</h1>");
 
                 })
         }
-        getUvIndex(response.coord.lat, response.coord.lon)
+        getUvIndex(lat, lon);
     });
 });
