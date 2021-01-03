@@ -14,7 +14,7 @@ $(document).ready(function (){
     curretDateAndTime();
 
     // Primary function, which is responsible for making all API calls based on users input
-    document.getElementById("searchCity").addEventListener("click", function searchCity() {
+    document.getElementById("searchCity").addEventListener("click", function searchCity(){
 
         // Variable responsible for holding user's text input
         var userInput = document.getElementById("userInput").value;
@@ -36,7 +36,7 @@ $(document).ready(function (){
                 method: "GET"
             })
                 // This will store all of the retrieved data inside of an object called "response"
-                .then(function (response) {
+                .then(function (response){
 
                     // Log the queryURL
                     console.log(queryURL);
@@ -67,14 +67,14 @@ $(document).ready(function (){
             var APIKey = "178ad9e584c10611ec693eda4d905c79";
 
             // Variable to hold the API call
-            var queryURL = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&exclude=hourly,daily&appid=" + APIKey;
+            var queryURL = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&exclude=hourly,minutely&appid=" + APIKey;
 
             $.ajax({
                 url: queryURL,
                 method: "GET"
             })
                 // We store all of the retrieved data inside of an object called "response"
-                .then(function (response) {
+                .then(function (response){
 
                     // Log the queryURL
                     console.log(queryURL);
@@ -88,5 +88,34 @@ $(document).ready(function (){
                 })
         }
         getUvIndex(lat, lon);
+
+        // This function is responsible for getting todays UV Index and appending it to the uvIndex div element
+        function getForecast(){
+
+            // Variable to hold the API key for UvIndex
+            var APIKey = "178ad9e584c10611ec693eda4d905c79";
+
+            // Variable to hold the API call
+            var queryURL = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&exclude=hourly,minutely&appid=" + APIKey;
+
+            $.ajax({
+                url: queryURL,
+                method: "GET"
+            })
+                // We store all of the retrieved data inside of an object called "response"
+                .then(function (response){
+
+                    // Log the queryURL
+                    console.log(queryURL);
+
+                    // Log the resulting object
+                    console.log(response.coord);
+
+                    // Transfer content to HTML 
+                    $("#uvIndex").html("<h1> UV Index: " + response.current.uvi + "</h1>");
+
+                })
+        }
+        getForecast();
     });
 });
