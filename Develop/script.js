@@ -44,9 +44,6 @@ $(document).ready(function (){
                     // Log the resulting object
                     console.log(response);
 
-                    // Log the coordinates response 
-                    console.log(response.coord.lat, response.coord.lon);
-
                     // Get the coordinates for the UV Index call
                     getUvIndex(response.coord.lat, response.coord.lon);
 
@@ -80,7 +77,7 @@ $(document).ready(function (){
                     console.log(queryURL);
 
                     // Log the resulting object
-                    console.log(response.coord);
+                    console.log(response);
 
                     // Transfer content to HTML 
                     $("#uvIndex").html("<h1> UV Index: " + response.current.uvi + "</h1>");
@@ -90,7 +87,7 @@ $(document).ready(function (){
         getUvIndex(lat, lon);
 
         // This function is responsible for getting todays UV Index and appending it to the uvIndex div element
-        function getForecast(){
+        function getForecast(lat, lon){
 
             // Variable to hold the API key for UvIndex
             var APIKey = "178ad9e584c10611ec693eda4d905c79";
@@ -104,18 +101,22 @@ $(document).ready(function (){
             })
                 // We store all of the retrieved data inside of an object called "response"
                 .then(function (response){
+                    console.log(getForecast);
 
                     // Log the queryURL
                     console.log(queryURL);
 
                     // Log the resulting object
-                    console.log(response.coord);
+                    console.log(response);
+
+                    // Log the resulting object
+                    console.log(response.daily);
 
                     // Transfer content to HTML 
-                    $("#uvIndex").html("<h1> UV Index: " + response.current.uvi + "</h1>");
+                    $("#forecast").html("<h1> 5-Day Forecast: " + response.daily + "</h1>");
 
                 })
         }
-        getForecast();
+        getForecast(lat, lon);
     });
 });
