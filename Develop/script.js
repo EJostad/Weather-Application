@@ -113,8 +113,12 @@ $(document).ready(function () {
                     // Log the resulting object
                     console.log(response.daily);
 
-                    // Transfer content to HTML 
-                    $("#forecast").html("<h1> 5-Day Forecast: " + response.daily + "</h1>");
+                    // Use foreloop to loop through daily array of objects
+                    for (var i = 0; i < 5; i++) {
+                        // Transfer content to HTML 
+                        $("#forecast").html("<h1> 5-Day Forecast: " + response.daily[i] + "</h1>");
+                        // End for loop
+                    };
 
                 })
         }
