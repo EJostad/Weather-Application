@@ -1,8 +1,8 @@
-$(document).ready(function (){
+$(document).ready(function () {
     console.log("ready!");
 
     // This function allows moment.js to display the current date & time to the page
-    function curretDateAndTime(){
+    function curretDateAndTime() {
         // Instantiate a moment object	
         var NowMoment = moment().format("dddd, MMMM Do YYYY, h:mm:ss a");
 
@@ -14,7 +14,7 @@ $(document).ready(function (){
     curretDateAndTime();
 
     // Primary function, which is responsible for making all API calls based on users input
-    document.getElementById("searchCity").addEventListener("click", function searchCity(){
+    document.getElementById("searchCity").addEventListener("click", function searchCity() {
 
         // Variable responsible for holding user's text input
         var userInput = document.getElementById("userInput").value;
@@ -23,7 +23,7 @@ $(document).ready(function (){
         var city = userInput;
 
         // This function is responsible for getting todays weather and appending it to the todaysWeather div element
-        function getTodaysWeather(city){
+        function getTodaysWeather(city) {
 
             // Variable to hold the API key for todaysWeather
             var APIKey = "178ad9e584c10611ec693eda4d905c79";
@@ -36,7 +36,7 @@ $(document).ready(function (){
                 method: "GET"
             })
                 // This will store all of the retrieved data inside of an object called "response"
-                .then(function (response){
+                .then(function (response) {
 
                     // Log the queryURL
                     console.log(queryURL);
@@ -46,6 +46,8 @@ $(document).ready(function (){
 
                     // Get the coordinates for the UV Index call
                     getUvIndex(response.coord.lat, response.coord.lon);
+
+                    getForecast(response.coord.lat, response.coord.lon);
 
                     // Convert the temp to fahrenheit
                     var tempF = Math.floor((response.main.temp - 273.15) * 1.80 + 32);
@@ -58,7 +60,7 @@ $(document).ready(function (){
         getTodaysWeather(city);
 
         // This function is responsible for getting todays UV Index and appending it to the uvIndex div element
-        function getUvIndex(lat, lon){
+        function getUvIndex(lat, lon) {
 
             // Variable to hold the API key for UvIndex
             var APIKey = "178ad9e584c10611ec693eda4d905c79";
@@ -71,7 +73,7 @@ $(document).ready(function (){
                 method: "GET"
             })
                 // We store all of the retrieved data inside of an object called "response"
-                .then(function (response){
+                .then(function (response) {
 
                     // Log the queryURL
                     console.log(queryURL);
@@ -84,10 +86,9 @@ $(document).ready(function (){
 
                 })
         }
-        getUvIndex(lat, lon);
 
         // This function is responsible for getting todays UV Index and appending it to the uvIndex div element
-        function getForecast(lat, lon){
+        function getForecast(lat, lon) {
 
             // Variable to hold the API key for UvIndex
             var APIKey = "178ad9e584c10611ec693eda4d905c79";
@@ -100,7 +101,7 @@ $(document).ready(function (){
                 method: "GET"
             })
                 // We store all of the retrieved data inside of an object called "response"
-                .then(function (response){
+                .then(function (response) {
                     console.log(getForecast);
 
                     // Log the queryURL
@@ -117,6 +118,5 @@ $(document).ready(function (){
 
                 })
         }
-        getForecast(lat, lon);
     });
 });
