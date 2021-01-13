@@ -6,10 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Link to materialize CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <title>Document</title>
+    <title>Weather</title>
 </head>
 
 <body>
+
+    <!-- Materialize CSS Responsive Side Navigation Layout start -->
+    <div class="row">
 
     <!-- Div element to display current date & time -->
     <div id="displayMoment"></div>
@@ -20,15 +23,17 @@
 
 
     <!-- Div elements to handle the ajax calls -->
-    <div id=todaysWeather></div>
-    <div id="uvIndex"></div>
-    <div id="forecast"></div>
+    <div class="col s12 m4 l3 blue-grey lighten-1" id="todaysWeather"></div>
+    <div class="col s12 m4 l3 blue-grey lighten-1" id="uvIndex"></div>
+    <div class="col s12 m8 l9 blue-grey darken-1" id="forecast"></div>
 
     <!-- All script tags here -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="./Develop/script.js"></script>
+
+    </div>
 </body>
 
 </html>
