@@ -95,7 +95,7 @@ $(document).ready(function () {
 
             // Variable to hold the API call
             // var queryURL = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&exclude=hourly,minutely&appid=" + APIKey;
-               var queryURL = "http://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + APIKey;
+            var queryURL = "http://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + APIKey;
             $.ajax({
                 url: queryURL,
                 method: "GET"
@@ -114,16 +114,17 @@ $(document).ready(function () {
                     console.log(response.list[0]);
 
                     // Use foreloop to loop through daily array of objects
-                    for (var i = 0; i < 5 ; i++) {
+                    for (var i = 0; i < 5; i++) {
                         // Transfer content to HTML 
                         var forecast = $("#forecast");
+
                         // $("#forecast").html("<h1> 5-Day Forecast: " + response.list[i].main.temp + "</h1>");
-                        var title = $("<h1>").addClass("forecastTitle").text(response.list[i].main.temp);
-                        
+                        var title = $("<h1>").addClass("forecastTitle").text(Math.floor(response.list[i].main.temp -273.15) * 1.80 + 32);
+
                         forecast.append(title);
                         // End for loop
                     };
-                    
+
                 })
         }
     });

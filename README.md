@@ -11,7 +11,7 @@ A simple weather application that utilizes API calls from https://openweathermap
 UV Index, and 5-day forecast for the specified search city. The application also uses moment.js to provide the user with the current date & time as well. 
 
 ## Main Page
-https://ejostad.github.io/Weather-Application/
+https://ericjostad.github.io/Weather-Application/
 
 
 ## Technologies
