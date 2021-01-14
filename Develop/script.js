@@ -114,6 +114,8 @@ $(document).ready(function () {
                     // Log the resulting object
                     console.log(response.list[0]);
 
+                    $("#forecast").html("<h1> 5 Day Forecast:", "<h1>")
+
                     // Use foreloop to loop through daily array of objects
                     for (var i = 0; i < 5; i++) {
                         // Transfer content to HTML 
