@@ -121,10 +121,12 @@ $(document).ready(function () {
                         // Transfer content to HTML 
                         var forecast = $("#forecast");
 
-                        // $("#forecast").html("<h1> 5-Day Forecast: " + response.list[i].main.temp + "</h1>");
+                        // Variables to hold the values for the looped indexs for temp and humidity (cannot get weather description to work, yet)
                         var forecastTemp = $("<h1>").addClass("forecastTemp").text(Math.floor(response.list[i].main.temp - 273.15) * 1.80 + 32 + " F°");
+                        var forecastHumid = $("<h1>").addClass("forecastHumid").text(response.list[i].main.humidity + " Humidity");
+                        // var forecastWeather = $("<h1>").addClass("forecastWeather").text(response.list[i].weather[i].description);
 
-                        forecast.append(forecastTemp);
+                        forecast.append(forecastTemp, forecastHumid);
                         // End for loop
                     };
 
