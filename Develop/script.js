@@ -54,7 +54,7 @@ $(document).ready(function () {
                     var tempF = Math.floor((response.main.temp - 273.15) * 1.80 + 32);
 
                     // Transfer content to HTML 
-                    $("#todaysWeather").html("<h1>" + response.name + " Temperature: " + tempF + " F</h1>");
+                    $("#todaysWeather").html("<h1>" + response.name + " Temperature: " + tempF + " F°</h1>");
 
                 })
         }
@@ -114,7 +114,7 @@ $(document).ready(function () {
                     // Log the resulting object
                     console.log(response.list[0]);
 
-                    $("#forecast").html("<h1> 5 Day Forecast:", "<h1>")
+                    $("#forecast").html("<h1>" + city + " 5 Day Forecast:")
 
                     // Use foreloop to loop through daily array of objects
                     for (var i = 0; i < 5; i++) {
@@ -122,9 +122,9 @@ $(document).ready(function () {
                         var forecast = $("#forecast");
 
                         // $("#forecast").html("<h1> 5-Day Forecast: " + response.list[i].main.temp + "</h1>");
-                        var title = $("<h1>").addClass("forecastTitle").text(Math.floor(response.list[i].main.temp - 273.15) * 1.80 + 32);
+                        var forecastTemp = $("<h1>").addClass("forecastTemp").text(Math.floor(response.list[i].main.temp - 273.15) * 1.80 + 32 + " F°");
 
-                        forecast.append(title);
+                        forecast.append(forecastTemp);
                         // End for loop
                     };
 
