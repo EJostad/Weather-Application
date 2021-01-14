@@ -2,16 +2,17 @@ $(document).ready(function () {
     console.log("ready!");
 
     // This function allows moment.js to display the current date & time to the page
-    function curretDateAndTime() {
-        // Instantiate a moment object	
-        var NowMoment = moment().format("dddd, MMMM Do YYYY, h:mm:ss a");
+    setInterval(function () {
+        function curretDateAndTime() {
+            // Instantiate a moment object	
+            var NowMoment = moment().format("dddd, MMMM Do YYYY, h:mm:ss a");
 
-        // Display value of moment object in #displayMoment div	
-        var eDisplayMoment = document.getElementById('displayMoment');
-        eDisplayMoment.innerHTML = NowMoment;
-
-    };
-    curretDateAndTime();
+            // Display value of moment object in #displayMoment div	
+            var eDisplayMoment = document.getElementById('displayMoment');
+            eDisplayMoment.innerHTML = NowMoment;
+        };
+        curretDateAndTime();
+    }, 1000);
 
     // Primary function, which is responsible for making all API calls based on users input
     document.getElementById("searchCity").addEventListener("click", function searchCity() {
@@ -119,7 +120,7 @@ $(document).ready(function () {
                         var forecast = $("#forecast");
 
                         // $("#forecast").html("<h1> 5-Day Forecast: " + response.list[i].main.temp + "</h1>");
-                        var title = $("<h1>").addClass("forecastTitle").text(Math.floor(response.list[i].main.temp -273.15) * 1.80 + 32);
+                        var title = $("<h1>").addClass("forecastTitle").text(Math.floor(response.list[i].main.temp - 273.15) * 1.80 + 32);
 
                         forecast.append(title);
                         // End for loop
