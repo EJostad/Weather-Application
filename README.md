@@ -22,6 +22,7 @@ This project is created with:
 
 ## Updates planned
 - Update styling to provide the user with a greater visual experience upon visiting the app.
+- Update getForecast function in script.js to populate each forecasted day's respective date. 
 - Update script.js file to allow for the user's recent city searches to be saved in the search bar, perhaps via a drop down list.
 
 ## Author

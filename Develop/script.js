@@ -39,9 +39,6 @@ $(document).ready(function () {
                 // This will store all of the retrieved data inside of an object called "response"
                 .then(function (response) {
 
-                    // Log the queryURL
-                    console.log(queryURL);
-
                     // Log the resulting object
                     console.log(response);
 
@@ -76,9 +73,6 @@ $(document).ready(function () {
                 // We store all of the retrieved data inside of an object called "response"
                 .then(function (response) {
 
-                    // Log the queryURL
-                    console.log(queryURL);
-
                     // Log the resulting object
                     console.log(response);
 
@@ -105,9 +99,6 @@ $(document).ready(function () {
                 .then(function (response) {
                     console.log(getForecast);
 
-                    // Log the queryURL
-                    console.log(queryURL);
-
                     // Log the resulting object
                     console.log(response);
 
@@ -121,13 +112,19 @@ $(document).ready(function () {
                         // Transfer content to HTML 
                         var forecast = $("#forecast");
 
+                        // // Converts api date to regular, human-ledgible date
+                        // var forecastDate= $("<h1>").addClass("forecastDate").text($.datepicker.formatDate("mm/dd/yy", 
+                        // new Date( parseInt(response.list[i].dt ,10)) ));
+
+                        var daysAhead = $("<h1>").addClass("daysAhead").text([i + 1] + " days ahead");
+
                         // Variables to hold the values for the looped indexs for temp and humidity (cannot get weather description to work, yet)
                         var forecastTemp = $("<h1>").addClass("forecastTemp").text(Math.floor(response.list[i].main.temp - 273.15) * 1.80 + 32 + " F°");
                         var forecastWind = $("<h1>").addClass("forecastWind").text(response.list[i].wind.speed + " Wind Speed");
                         var forecastHumid = $("<h1>").addClass("forecastHumid").text(response.list[i].main.humidity + " Humidity");
                         // var forecastWeather = $("<h1>").addClass("forecastWeather").text(response.list[i].weather[i].description);
 
-                        forecast.append(forecastTemp, forecastHumid, forecastWind);
+                        forecast.append(daysAhead, forecastTemp, forecastHumid, forecastWind);
                         // End for loop
                     };
 
