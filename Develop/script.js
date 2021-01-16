@@ -1,6 +1,7 @@
 $(document).ready(function () {
     console.log("ready!");
 
+    // Variable to call needed elements
     var instructBox = document.querySelector(".instructionsBox");
 
     // This function allows moment.js to display the current date & time to the page
@@ -19,7 +20,7 @@ $(document).ready(function () {
     // Primary function, which is responsible for making all API calls based on users input
     document.getElementById("searchCity").addEventListener("click", function searchCity() {
 
-        // Hide the instruction text
+        // Hide the instruction text & show the data text
         instructBox.classList.add("hide");
 
         // Variable responsible for holding user's text input

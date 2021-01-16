@@ -5,16 +5,33 @@ body {
 
 #displayMoment {
     font-weight: 500;
+    font-size: 15px;
 }
 
 h1 {
-    font-size: large;
+    font-size: 20px;
 }
 
 #userInput {
     text-align: center;
 }
 
-.hide{
+#todaysWeather, #uvIndex, #forecast {
+    margin: 10px;
+    padding: 1px; 
+}
+
+.daysAhead {
+    background-color: #78909c;
+    padding: 10px;
+}
+
+.instructionsBox {
+    font-size: large;
+    font-weight: 500;
+    padding: 100px;
+}
+
+.hide {
     display: none;
 }
