@@ -14,3 +14,7 @@ h1 {
 #userInput {
     text-align: center;
 }
+
+.hide{
+    display: none;
+}
