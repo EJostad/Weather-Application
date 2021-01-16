@@ -116,6 +116,7 @@ $(document).ready(function () {
                         // var forecastDate= $("<h1>").addClass("forecastDate").text($.datepicker.formatDate("mm/dd/yy", 
                         // new Date( parseInt(response.list[i].dt ,10)) ));
 
+                        // Placeholder variable to append how many days ahead the forecasted data is. Will be used until I can get the date to append properly
                         var daysAhead = $("<h1>").addClass("daysAhead").text([i + 1] + " days ahead");
 
                         // Variables to hold the values for the looped indexs for temp and humidity (cannot get weather description to work, yet)
