@@ -28,4 +28,4 @@ This project is created with:
 - Update script.js file to allow for the user's recent city searches to be saved in the search bar, perhaps via a drop down list.
 
 ## Author
-- Eric Jostad
+- Eric Jostad(https://github.com/EricJostad)
